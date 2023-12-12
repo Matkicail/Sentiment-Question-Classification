@@ -1,0 +1,169 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Container styles unchanged */
+
+/* Add a spinning animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes colorChange {
+    0%, 100% {
+        background-color: #007bff; /* Blue */
+        opacity: 0.5;
+    }
+    50% {
+        background-color: #808080; /* Grey */
+        opacity: 0.5;
+    }
+}
+
+.pattern::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: inherit;
+    opacity: 0;
+    z-index: -1;
+    animation: ripple 3s ease-out infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* Create a geometric pattern */
+.pattern {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #007bff;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px; /* Offset by half the height */
+    margin-left: -50px; /* Offset by half the width */
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+    z-index: -1;
+    opacity: 0.8; /* Make it more visible */
+    border: 1px solid #333;
+    animation: spin 20s linear infinite, colorChange 5s ease-in-out infinite;
+}
+
+/* Create multiple layers of patterns with varying sizes, positions, and animation speeds */
+.pattern.small {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    animation-duration: 10s;
+    animation: spin 20s linear infinite, colorChange 5s ease-in-out infinite;
+}
+
+.pattern.medium {
+    width: 150px;
+    height: 150px;
+    margin-top: -75px;
+    margin-left: -75px;
+    animation-duration: 30s;
+    animation: spin 20s linear infinite, colorChange 5s ease-in-out infinite;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;  /* Enable vertical scrolling inside the container if needed */
+    max-height: 100vh;
+}
+
+#titleResponseContainer, #contentResponseContainer {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.stars {
+    display: inline-block; /* or 'flex' */
+    white-space: nowrap; /* Prevent wrapping to a new line */
+}
+
+
+.star {
+    color: gray;
+    font-size: 24px;
+    transition: color 0.3s ease;
+    font-size: 20px; /* adjust size as necessary */
+    line-height: 1;
+}
+
+.star.filled {
+    color: #ffc107;
+}
+
+.star.half-filled {
+    /* Create a half-filled star effect */
+    color: #ffc107;
+    position: relative;
+}
+
+.star.half-filled::before {
+    content: '☆';
+    position: absolute;
+    left: 0;
+    color: gray;
+    width: 50%;
+    overflow: hidden;
+}
+
+/* Additional styles for better aesthetics */
+h2 {
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-6 {
+        margin-bottom: 20px;
+    }
+}

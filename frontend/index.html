@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Sentiment Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="pattern large"></div>
+    <div class="pattern medium"></div>
+    <div class="pattern small"></div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Email Sentiment Analysis</h2>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="emailTitle">Title of the Email:</label>
+                <input type="text" id="emailTitle" class="form-control">
+                <button onclick="analyzeSentiment('title')" class="btn btn-primary mt-2">Analyze Title</button>
+                <div id="titleResponseContainer" class="mt-3"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="emailContent">Content of the Email:</label>
+                <textarea id="emailContent" class="form-control"></textarea>
+                <button onclick="analyzeSentiment('content')" class="btn btn-primary mt-2">Analyze Content</button>
+                <div id="contentResponseContainer" class="mt-3"></div>
+                <div class="stars"></div>
+                <label for="questionInput">Ask a Question:</label>
+                <input type="text" id="questionInput" class="form-control">
+                <button onclick="submitQuestion()" class="btn btn-info mt-2">Submit Question</button>
+                <div id="questionResponseContainer" class="response-container mt-3"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
